@@ -9,10 +9,6 @@ const usuarioSchema = Schema({
     type: String,
     required: true,
   },
-  primerApellido: {
-    type: String,
-    requiered: true,
-  },
   contrasena: {
     type: String,
     required: true,
