@@ -23,10 +23,10 @@ router.get("/usuario", (req, res) => {
 
 // search user by name
 router.get("/usuario/:name", (req, res) => {
-  const { name } = req.params;
+  const { nombreUsuario } = req.params;
   const search = new RegExp(name, "i");
   usuarioSchema
-    .find({$or: [{name: search}],}).lean()
+    .find({$or: [{nombreUsuario: search}],}).lean()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
@@ -43,11 +43,11 @@ router.delete("/usuario/:id", (req, res) => {
 // update a user
 router.put("/usuario/:id", (req, res) => {
   const { id } = req.params;
-  const { nombreUsuario, nombreCompleto, primerApellido, contrasena } = req.body;
+  const { nombreUsuario, nombreCompleto, contrasena } = req.body;
   usuarioSchema
     .updateOne(
       { _id: id },
-      { $set: { nombreUsuario, nombreCompleto, primerApellido, contrasena } }
+      { $set: { nombreUsuario, nombreCompleto, contrasena } }
     )
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
