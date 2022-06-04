@@ -43,11 +43,11 @@ router.delete("/usuario/:id", (req, res) => {
 // update a user
 router.put("/usuario/:id", (req, res) => {
   const { id } = req.params;
-  const { nombreUsuario, nombreCompleto, contrasena } = req.body;
+  const { nombreUsuario, nombreCompleto,masculinofemenino, contrasena } = req.body;
   usuarioSchema
     .updateOne(
       { _id: id },
-      { $set: { nombreUsuario, nombreCompleto, contrasena } }
+      { $set: { nombreUsuario, nombreCompleto,masculinofemenino, contrasena } }
     )
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
