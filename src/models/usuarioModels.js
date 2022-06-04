@@ -9,6 +9,10 @@ const usuarioSchema = Schema({
     type: String,
     required: true,
   },
+  masculinofemenino: {
+    type: String,
+    required: true,
+  },
   contrasena: {
     type: String,
     required: true,
